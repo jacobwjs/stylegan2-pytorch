@@ -505,13 +505,10 @@ class Generator(nn.Module):
 
         if len(styles) < 2:
             inject_index = self.n_latent
-
             if styles[0].ndim < 3:
                 latent = styles[0].unsqueeze(1).repeat(1, inject_index, 1)
-
             else:
                 latent = styles[0]
-
         else:
             if inject_index is None:
                 inject_index = random.randint(1, self.n_latent - 1)
@@ -674,4 +671,3 @@ class Discriminator(nn.Module):
         out = self.final_linear(out)
 
         return out
-
